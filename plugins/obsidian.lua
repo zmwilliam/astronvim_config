@@ -1,6 +1,6 @@
 return {
   "epwalsh/obsidian.nvim",
-  dependecies = { "nvim-lua/plenary.nvim" },
+  dependencies = { "nvim-lua/plenary.nvim" },
   event = { "BufReadPre " .. vim.fn.expand "~" .. "/workspace/obsidian/**.md" },
   cmd = {
     "ObsidianQuickSwitch",
