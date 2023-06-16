@@ -34,6 +34,12 @@ return function(config)
       --Fugitive
       ["<leader>gg"] = { "<cmd>Git<cr>", desc = "Fugitive" },
       ["<leader>go"] = { "<cmd>GBrowse<cr>", desc = "Open file in host" },
+
+      -- Override find buffers to sort by last used
+      ["<leader>fb"] = {
+        function() require("telescope.builtin").buffers { sort_lastused = true } end,
+        desc = "Find buffers",
+      },
     }),
     v = utils.extend_tbl(normal_visual, {
       -- Visual paste without yanking
