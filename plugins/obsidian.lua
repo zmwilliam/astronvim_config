@@ -15,5 +15,10 @@ return {
     notes_subdir = "notes",
     daily_notes = { folder = "notes/dailies" },
     completion = { nvim_cmp = true },
-  }
+    templates = {
+      subdir = "templates",
+      date_format = "%Y-%m-%d-%a",
+      time_format = "%H:%M",
+    },
+  },
 }

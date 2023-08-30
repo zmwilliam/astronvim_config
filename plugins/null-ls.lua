@@ -17,11 +17,13 @@ return {
 
     local sources = {
       --lua
-      f.stylua.with { condition = has_root_file { "stylua.toml", ".stylua.toml" } },
+      f.stylua, --.with { condition = has_root_file { "stylua.toml", ".stylua.toml" } },
       d.selene.with { condition = has_root_file "selene.toml" },
 
+      f.prettier.with { disabled_filetypes = { "markdown" } },
+
       -- elixir
-      f.mix.with { condition = has_root_file ".formatter.exs" },
+      -- f.mix.with { condition = has_root_file ".formatter.exs" },
       d.credo.with {
         timeout = 15000,
         method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
