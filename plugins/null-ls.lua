@@ -8,7 +8,7 @@ return {
     -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 
     local null_ls = require "null-ls"
-    local f = null_ls.builtins.formatting
+    -- local f = null_ls.builtins.formatting
     local d = null_ls.builtins.diagnostics
 
     local has_root_file = function(file)
@@ -16,11 +16,11 @@ return {
     end
 
     local sources = {
-      --lua
-      f.stylua, --.with { condition = has_root_file { "stylua.toml", ".stylua.toml" } },
-      d.selene.with { condition = has_root_file "selene.toml" },
-
-      f.prettier.with { disabled_filetypes = { "markdown" } },
+      -- --lua
+      -- f.stylua, --.with { condition = has_root_file { "stylua.toml", ".stylua.toml" } },
+      -- d.selene.with { condition = has_root_file "selene.toml" },
+      --
+      -- f.prettier.with { disabled_filetypes = { "markdown" } },
 
       -- elixir
       -- f.mix.with { condition = has_root_file ".formatter.exs" },
@@ -29,9 +29,14 @@ return {
         method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
         condition = has_root_file ".credo.exs",
       },
+
+      -- golang
+      -- f.gofumpt,
+      -- f.goimports_reviser,
+      -- f.golines,
     }
 
-    config.sources = sources
+    config.sources = require("astronvim.utils").extend_tbl(config.sources, sources)
     -- config.debug = true
     return config
   end,
