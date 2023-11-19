@@ -1,4 +1,3 @@
-local get_icon = require("astronvim.utils").get_icon
 return function(config)
   -- Mapping data with "desc" stored directly by vim.keymap.set().
   --
@@ -31,10 +30,6 @@ return function(config)
       ["<leader>D"] = { [["+d$]], desc = "delete to clipboard (d$)" },
       ["<leader>Y"] = { [["+y$]], desc = "yank to clipboard (y$)" },
 
-      -- Fugitive
-      ["<leader>gg"] = { "<cmd>Git<cr>", desc = "Fugitive" },
-      ["<leader>go"] = { "<cmd>GBrowse<cr>", desc = "Open file in host" },
-
       -- Override find buffers to sort by last used
       ["<leader>fb"] = {
         function() require("telescope.builtin").buffers { sort_lastused = true } end,
@@ -54,17 +49,6 @@ return function(config)
 
       -- Disable  Home Screen binding
       ["<leader>h"] = false,
-
-      -- Obsidian
-      ["<leader>O"] = { desc = get_icon("DefaultFile", 1, true) .. "Obdisian Notes" },
-      ["<leader>Oq"] = { "<cmd>ObsidianQuickSwitch<CR>", desc = "Quick Switch" },
-      ["<leader>Os"] = { "<cmd>ObsidianSearch<CR>", desc = "Search" },
-      ["<leader>On"] = { "<cmd>ObsidianNew<CR>", desc = "New" },
-      ["<leader>Ot"] = { "<cmd>ObsidianToday<CR>", desc = "Note for TODAY (open or create)" },
-      ["<leader>Oy"] = { "<cmd>ObsidianYesterday<CR>", desc = "Note for YESTERDAY (open or create)" },
-      ["<leader>Oo"] = { "<cmd>ObsidianOpen<CR>", desc = "Open in the Obsidian App" },
-      ["<leader>OT"] = { "<cmd>ObsidianTemplate<CR>", desc = "List templates to insert" },
-      ["<leader>Of"] = { "<cmd>ObsidianFollowLink<CR>", desc = "Follow Link" },
     }),
 
     v = utils.extend_tbl(normal_visual, {
