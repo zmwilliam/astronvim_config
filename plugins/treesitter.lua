@@ -24,6 +24,7 @@ return {
       "markdown_inline",
       "python",
       "query",
+      "ruby",
       "scss",
       "sql",
       "surface",

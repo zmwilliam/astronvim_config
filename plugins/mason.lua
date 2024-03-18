@@ -11,6 +11,7 @@ return {
         "vimls",
         "gopls",
         "sqlls",
+        "solargraph",
       })
     end,
   },
@@ -34,20 +35,26 @@ return {
         "gomodifytags",
       })
 
+      local null_ls = require "null-ls"
+      local f = null_ls.builtins.formatting
+      local d = null_ls.builtins.diagnostics
+
       opts.handlers = u.extend_tbl(opts.handlers, {
         prettierd = function()
-          local null_ls = require "null-ls"
-
-          null_ls.register(null_ls.builtins.formatting.prettierd.with {
+          null_ls.register(f.prettierd.with {
             disabled_filetypes = { "markdown" },
           })
         end,
 
         selene = function()
-          local null_ls = require "null-ls"
-
-          null_ls.register(null_ls.builtins.diagnostics.selene.with {
+          null_ls.register(d.selene.with {
             condition = function(utils) utils.root_has_file { "selene.toml" } end,
+          })
+        end,
+
+        stylua = function()
+          null_ls.register(f.stylua.with {
+            condition = function(utils) utils.root_has_file { "stylua.toml", ".stylua.toml" } end,
           })
         end,
       })
