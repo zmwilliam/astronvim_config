@@ -11,7 +11,16 @@ return {
     "ObsidianOpen",
   },
   opts = {
-    dir = "~/workspace/obsidian",
+    workspaces = {
+      {
+        name = "personal",
+        path = "~/Obsidian/personal",
+      },
+      {
+        name = "work",
+        path = "~/Obsidian/work",
+      },
+    },
     notes_subdir = "notes",
     daily_notes = { folder = "notes/dailies" },
     completion = { nvim_cmp = true },

@@ -4,5 +4,6 @@ return {
   opt = {
     clipboard = "",
     swapfile = false,
+    conceallevel = 2,
   },
 }
